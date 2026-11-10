@@ -10,6 +10,76 @@ cache: true
 interface:
   modelSelect: false
   customWelcome: "Welcome to Pugad Assist! Ask me about Pugad Fresh Eggs."
+  theme:
+    version: 1
+    name: pugad
+    modes:
+      light:
+        colors:
+          rgb-surface-primary: '255 251 240'
+          rgb-surface-chat: '255 251 240'
+          rgb-surface-canvas: '255 251 240'
+          rgb-surface-sidebar: '255 243 214'
+          rgb-surface-primary-alt: '255 246 225'
+          rgb-surface-secondary: '255 240 205'
+          rgb-surface-secondary-alt: '252 234 190'
+          rgb-surface-composer: '255 255 250'
+          rgb-surface-composer-hover: '255 248 232'
+          rgb-surface-hover: '252 234 190'
+          rgb-surface-hover-alt: '248 225 170'
+          rgb-surface-active: '245 215 150'
+          rgb-surface-active-alt: '240 205 135'
+          rgb-surface-nav-hover: '252 234 190'
+          rgb-surface-nav-selected: '245 215 150'
+          rgb-surface-card: '255 246 225'
+          rgb-surface-card-hover: '252 234 190'
+          rgb-surface-dialog: '255 251 240'
+          rgb-surface-menu: '255 251 240'
+          rgb-surface-popover: '255 251 240'
+          rgb-text-primary: '58 36 18'
+          rgb-border-medium: '230 205 160'
+          rgb-accent-primary: '242 182 64'
+          rgb-accent-primary-hover: '214 150 40'
+          rgb-ring-primary: '242 182 64'
+          rgb-surface-submit: '168 106 51'
+          rgb-surface-submit-hover: '140 86 38'
+          rgb-button-primary: '168 106 51'
+          rgb-button-primary-hover: '140 86 38'
+          rgb-link: '154 90 30'
+          rgb-focus-outline: '242 182 64'
+      dark:
+        colors:
+          rgb-surface-primary: '30 23 16'
+          rgb-surface-chat: '30 23 16'
+          rgb-surface-canvas: '30 23 16'
+          rgb-surface-sidebar: '22 17 12'
+          rgb-surface-primary-alt: '36 28 20'
+          rgb-surface-secondary: '44 34 24'
+          rgb-surface-secondary-alt: '52 40 28'
+          rgb-surface-composer: '48 37 26'
+          rgb-surface-composer-hover: '58 45 32'
+          rgb-surface-hover: '60 46 32'
+          rgb-surface-hover-alt: '68 52 36'
+          rgb-surface-active: '78 60 40'
+          rgb-surface-active-alt: '86 66 44'
+          rgb-surface-nav-hover: '52 40 28'
+          rgb-surface-nav-selected: '72 55 37'
+          rgb-surface-card: '40 31 22'
+          rgb-surface-card-hover: '52 40 28'
+          rgb-surface-dialog: '40 31 22'
+          rgb-surface-menu: '40 31 22'
+          rgb-surface-popover: '40 31 22'
+          rgb-text-primary: '255 240 210'
+          rgb-border-medium: '80 62 40'
+          rgb-accent-primary: '242 182 64'
+          rgb-accent-primary-hover: '255 205 100'
+          rgb-ring-primary: '242 182 64'
+          rgb-surface-submit: '168 106 51'
+          rgb-surface-submit-hover: '190 125 60'
+          rgb-button-primary: '168 106 51'
+          rgb-button-primary-hover: '190 125 60'
+          rgb-link: '255 200 90'
+          rgb-focus-outline: '242 182 64'
 
 modelSpecs:
   enforce: true
