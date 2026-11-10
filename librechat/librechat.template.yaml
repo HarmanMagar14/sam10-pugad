@@ -4,7 +4,7 @@
 #
 # Set "version" to the value at the top of LibreChat's own librechat.example.yaml
 # for the LibreChat version you cloned.
-version: 1.3.13
+version: 1.3.18
 cache: true
 
 interface:
@@ -18,11 +18,11 @@ modelSpecs:
     - name: "pugad-assist"
       label: "Pugad Assist"
       description: "Egg sizes, prices, ordering, delivery and payment at Pugad Fresh Eggs"
-      iconURL: "/assets/logo.svg"
+      iconURL: "https://raw.githubusercontent.com/HarmanMagar14/sam10-pugad/main/librechat/branding/logo-512.png"
       default: true
       preset:
         endpoint: "google"
-        model: "REPLACE_WITH_MODEL_ID"
+        model: "gemini-3.5-flash"
         modelLabel: "Pugad Assist"
         greeting: "Hi! I'm Pugad Assist. Ask me about our egg sizes, prices, orders, delivery or payment. Pwede ring mag-Tagalog!"
         temperature: 0.2
