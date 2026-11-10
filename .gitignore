@@ -3,3 +3,4 @@
 dumps/
 *.gz
 librechat.yaml
+*:Zone.Identifier
