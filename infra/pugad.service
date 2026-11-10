@@ -1,0 +1,14 @@
+[Unit]
+Description=Pugad Assist stack
+After=docker.service network-online.target
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=ec2-user
+ExecStart=/opt/pugad/repo/scripts/start.sh
+
+[Install]
+WantedBy=multi-user.target

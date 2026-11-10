@@ -1,0 +1,54 @@
+services:
+  api:
+    depends_on: !override
+      - mongodb
+    environment:
+      - GOOGLE_KEY=${GOOGLE_KEY}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - CREDS_KEY=${CREDS_KEY}
+      - CREDS_IV=${CREDS_IV}
+    volumes:
+      - type: bind
+        source: ./librechat.yaml
+        target: /app/librechat.yaml
+      - ./branding/logo.svg:/app/client/dist/assets/logo.svg:ro
+      - ./branding/favicon-16x16.png:/app/client/dist/assets/favicon-16x16.png:ro
+      - ./branding/favicon-32x32.png:/app/client/dist/assets/favicon-32x32.png:ro
+      - ./branding/apple-touch-icon-180x180.png:/app/client/dist/assets/apple-touch-icon-180x180.png:ro
+      - ./branding/icon-192x192.png:/app/client/dist/assets/icon-192x192.png:ro
+      - ./branding/maskable-icon.png:/app/client/dist/assets/maskable-icon.png:ro
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: ap-southeast-2
+        awslogs-group: /sam10/pugad/app
+        awslogs-create-group: "true"
+  mongodb:
+    logging:
+      driver: awslogs
+      options:
+        awslogs-region: ap-southeast-2
+        awslogs-group: /sam10/pugad/mongodb
+        awslogs-create-group: "true"
+  nginx:
+    image: nginx:stable
+    container_name: pugad-nginx
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      - APP_VERSION=${APP_VERSION}
+    volumes:
+      - ./nginx:/etc/nginx/templates:ro
+      - /var/log/pugad:/var/log/pugad
+    depends_on:
+      - api
+  meilisearch:
+    profiles: ["donotstart"]
+  rag_api:
+    profiles: ["donotstart"]
+  vectordb:
+    profiles: ["donotstart"]
+  admin-panel:
+    profiles: ["donotstart"]
