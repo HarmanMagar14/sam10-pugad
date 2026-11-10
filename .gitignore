@@ -1,0 +1,5 @@
+.env
+*.pem
+dumps/
+*.gz
+librechat.yaml

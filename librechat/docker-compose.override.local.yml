@@ -1,0 +1,22 @@
+# Copy to ~/sam10/LibreChat/docker-compose.override.yml
+# Check the asset file names first with:
+#   docker exec LibreChat ls /app/client/dist/assets
+# and remove any line below whose file name doesn't exist in your version.
+services:
+  api:
+    volumes:
+      - type: bind
+        source: ./librechat.yaml
+        target: /app/librechat.yaml
+      - ./branding/logo.svg:/app/client/dist/assets/logo.svg:ro
+      - ./branding/favicon-16x16.png:/app/client/dist/assets/favicon-16x16.png:ro
+      - ./branding/favicon-32x32.png:/app/client/dist/assets/favicon-32x32.png:ro
+      - ./branding/apple-touch-icon-180x180.png:/app/client/dist/assets/apple-touch-icon-180x180.png:ro
+      - ./branding/icon-192x192.png:/app/client/dist/assets/icon-192x192.png:ro
+      - ./branding/maskable-icon.png:/app/client/dist/assets/maskable-icon.png:ro
+  meilisearch:
+    profiles: ["donotstart"]
+  rag_api:
+    profiles: ["donotstart"]
+  vectordb:
+    profiles: ["donotstart"]

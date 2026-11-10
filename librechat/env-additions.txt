@@ -1,0 +1,8 @@
+# Add these lines to LibreChat's .env (replace any existing line with the same name).
+# Never commit .env to git: it holds your API key.
+APP_TITLE=Pugad Assist
+CUSTOM_FOOTER=Pugad Fresh Eggs is an invented business for a SAM10 school project
+HELP_AND_FAQ_URL=https://harmanmagar14.github.io/sam10-pugad/
+SEARCH=false
+GOOGLE_KEY=<your Google AI Studio key — laptop only; on the server it comes from Parameter Store>
+GOOGLE_MODELS=<the same model ID you put in librechat.template.yaml>

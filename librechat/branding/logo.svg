@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Pugad Assist</title>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="56%" r="50%">
+      <stop offset="0%" stop-color="#FFD54A" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#FFC233" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#FFC233" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shell" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#FFF8E1"/>
+      <stop offset="55%" stop-color="#FFE29A"/>
+      <stop offset="100%" stop-color="#F2B640"/>
+    </radialGradient>
+    <radialGradient id="eye" cx="45%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#2F4A7A"/>
+      <stop offset="70%" stop-color="#16213D"/>
+      <stop offset="100%" stop-color="#0D1428"/>
+    </radialGradient>
+    <path id="egg" d="M256 70 C360 70 420 230 420 320 C420 410 345 460 256 460 C167 460 92 410 92 320 C92 230 152 70 256 70 Z"/>
+    <clipPath id="eggClip"><use href="#egg"/></clipPath>
+    <clipPath id="lower">
+      <polygon points="0,210 100,210 130,210 158,186 188,214 220,188 256,216 292,188 324,214 354,186 382,210 412,210 512,210 512,512 0,512"/>
+    </clipPath>
+    <clipPath id="upper">
+      <polygon points="0,0 512,0 512,210 412,210 382,210 354,186 324,214 292,188 256,216 220,188 188,214 158,186 130,210 100,210 0,210"/>
+    </clipPath>
+    <clipPath id="mouthClip">
+      <path d="M214 344 Q256 414 298 344 Q256 358 214 344 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- soft glow -->
+  <circle cx="256" cy="290" r="250" fill="url(#glow)"/>
+
+  <!-- lower half of the egg (the face) -->
+  <g clip-path="url(#lower)">
+    <use href="#egg" fill="url(#shell)" stroke="#6B3E1E" stroke-width="10" stroke-linejoin="round"/>
+  </g>
+  <g clip-path="url(#eggClip)">
+    <polyline points="100,210 130,210 158,186 188,214 220,188 256,216 292,188 324,214 354,186 382,210 412,210"
+      fill="none" stroke="#6B3E1E" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+  </g>
+  <!-- shine on the shell -->
+  <ellipse cx="146" cy="292" rx="16" ry="40" fill="#FFFFFF" opacity="0.45" transform="rotate(12 146 292)"/>
+
+  <!-- top shell, lifted like a lid -->
+  <g transform="translate(-4 -44) rotate(-17 404 210)">
+    <g clip-path="url(#upper)">
+      <use href="#egg" fill="url(#shell)" stroke="#6B3E1E" stroke-width="10" stroke-linejoin="round"/>
+    </g>
+    <g clip-path="url(#eggClip)">
+      <polyline points="100,210 130,210 158,186 188,214 220,188 256,216 292,188 324,214 354,186 382,210 412,210"
+        fill="none" stroke="#6B3E1E" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
+    </g>
+    <ellipse cx="200" cy="120" rx="30" ry="12" fill="#FFFFFF" opacity="0.55" transform="rotate(-28 200 120)"/>
+  </g>
+
+  <!-- sparkles from the crack -->
+  <g fill="#FFC233" stroke="#6B3E1E" stroke-width="4" stroke-linejoin="round">
+    <path d="M86 150 L94 166 L110 174 L94 182 L86 198 L78 182 L62 174 L78 166 Z"/>
+    <path d="M440 236 L445 246 L455 251 L445 256 L440 266 L435 256 L425 251 L435 246 Z"/>
+  </g>
+
+  <!-- eyes -->
+  <ellipse cx="198" cy="296" rx="32" ry="38" fill="url(#eye)"/>
+  <ellipse cx="314" cy="296" rx="32" ry="38" fill="url(#eye)"/>
+  <circle cx="209" cy="281" r="11" fill="#FFFFFF"/>
+  <circle cx="325" cy="281" r="11" fill="#FFFFFF"/>
+  <circle cx="188" cy="312" r="5.5" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="304" cy="312" r="5.5" fill="#FFFFFF" opacity="0.9"/>
+
+  <!-- blush -->
+  <ellipse cx="152" cy="346" rx="24" ry="13" fill="#FF7E7E" opacity="0.55"/>
+  <ellipse cx="360" cy="346" rx="24" ry="13" fill="#FF7E7E" opacity="0.55"/>
+
+  <!-- open smile -->
+  <path d="M214 344 Q256 414 298 344 Q256 358 214 344 Z" fill="#7A2A1A" stroke="#6B3E1E" stroke-width="5" stroke-linejoin="round"/>
+  <g clip-path="url(#mouthClip)">
+    <ellipse cx="256" cy="380" rx="22" ry="12" fill="#F2777A"/>
+  </g>
+
+  <!-- the nest (pugad) -->
+  <g stroke="#6B3E1E" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M60 404 L28 386"/><path d="M64 418 L30 424"/>
+    <path d="M452 404 L486 384"/><path d="M448 420 L482 428"/>
+  </g>
+  <path d="M54 398 Q256 470 458 398 Q452 486 256 494 Q60 486 54 398 Z" fill="#A86A33" stroke="#6B3E1E" stroke-width="9" stroke-linejoin="round"/>
+  <g fill="none" stroke="#6B3E1E" stroke-width="5" stroke-linecap="round" opacity="0.75">
+    <path d="M78 424 Q170 458 250 460"/>
+    <path d="M262 462 Q350 456 432 420"/>
+    <path d="M110 454 Q200 480 290 478"/>
+    <path d="M300 476 Q370 466 420 444"/>
+  </g>
+</svg>
