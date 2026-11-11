@@ -1,0 +1,7 @@
+[Unit]
+Description=Nightly Pugad backup
+
+[Service]
+Type=oneshot
+User=ec2-user
+ExecStart=/opt/pugad/repo/scripts/backup.sh

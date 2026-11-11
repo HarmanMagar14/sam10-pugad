@@ -1,0 +1,9 @@
+[Unit]
+Description=Run the Pugad backup every night (02:00 Manila)
+
+[Timer]
+OnCalendar=*-*-* 18:00:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target
