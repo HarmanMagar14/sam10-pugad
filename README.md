@@ -18,3 +18,10 @@ Based on LibreChat by Danny Avila and contributors — https://github.com/danny-
 | 2026-11-10 | Harman | Security group pugad-web: HTTP from CloudFront prefix list only | SG screenshot |
 | 2026-11-11 | Harman | Log groups with 1-month retention (requests, app, mongodb) | log groups screenshot |
 | 2026-11-11 | Harman | CloudTrail pugad-trail logging; SNS topic pugad-alerts (email confirmed) | trail screenshot |
+| 2026-11-14 | Harman | CloudFront blocked by account verification (4+ days); Plan B: Caddy + Let's Encrypt HTTPS at https://13-239-67-10.sslip.io | E-02 |
+| 2026-11-14 | Harman | Security group: HTTP 80 + HTTPS 443 from anywhere (Caddy); registration closed after team sign-up | SG screenshot |
+| 2026-11-14 | Harman | CloudWatch dashboard `pugad-ops` (alarm strip, questions, answer time, failures, CPU, memory, disk) | evidence/E-06-dashboard.jpg |
+| 2026-11-14 | Harman | CPU stress test: real ALARM email from `pugad-high-cpu` | evidence/E-08 (CPU email) |
+| 2026-11-14 | Harman | Automation #2: health-check Lambda every 15 min + `pugad-site-down` alarm, least-privilege role | infra/health-check/, evidence/E-09, E-09b |
+| 2026-11-14 | Harman | Staged disk-full fault: alarm, root cause, fix, logrotate guard, runbook | docs/runbook-disk-full.md, infra/logrotate-pugad, evidence/E-12a–c |
+| 2026-11-15 | Harman | Restore test of S3 backup on laptop (2nd backup matched live: 1/1/2) | docs/restore-test.md, evidence/E-11a–c |

@@ -1,0 +1,13 @@
+# /etc/logrotate.d/pugad  (SAM10 disk-full fix)
+# Keeps every log in /var/log/pugad small so one runaway file cannot fill the disk.
+/var/log/pugad/*.log {
+    daily
+    maxsize 100M
+    rotate 7
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+    su root root
+}
