@@ -35,8 +35,6 @@ services:
     image: nginx:stable
     container_name: pugad-nginx
     restart: always
-    ports:
-      - "80:80"
     environment:
       - APP_VERSION=${APP_VERSION}
     volumes:
@@ -44,6 +42,18 @@ services:
       - /var/log/pugad:/var/log/pugad
     depends_on:
       - api
+  caddy:
+    image: caddy:2
+    container_name: pugad-caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on:
+      - nginx
   meilisearch:
     profiles: ["donotstart"]
   rag_api:
@@ -52,3 +62,5 @@ services:
     profiles: ["donotstart"]
   admin-panel:
     profiles: ["donotstart"]
+volumes:
+  caddy_data:

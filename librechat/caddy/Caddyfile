@@ -1,0 +1,6 @@
+13-239-67-10.sslip.io {
+	encode gzip
+	reverse_proxy nginx:80 {
+		flush_interval -1
+	}
+}

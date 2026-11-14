@@ -17,3 +17,4 @@ Based on LibreChat by Danny Avila and contributors — https://github.com/danny-
 | 2026-11-10 | Harman | Created pugad-ec2-role with least-privilege inline policy | role screenshot |
 | 2026-11-10 | Harman | Security group pugad-web: HTTP from CloudFront prefix list only | SG screenshot |
 | 2026-11-11 | Harman | Log groups with 1-month retention (requests, app, mongodb) | log groups screenshot |
+| 2026-11-11 | Harman | CloudTrail pugad-trail logging; SNS topic pugad-alerts (email confirmed) | trail screenshot |

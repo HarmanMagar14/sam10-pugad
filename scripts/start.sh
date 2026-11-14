@@ -18,7 +18,7 @@ aws s3 sync "s3://$BUCKET/" /opt/pugad/content/ --delete
 
 # 3. Config files from the repo
 cp "$REPO/librechat/docker-compose.override.server.yml" "$APP/docker-compose.override.yml"
-cp -r "$REPO/librechat/nginx" "$REPO/librechat/branding" "$APP/"
+cp -r "$REPO/librechat/nginx" "$REPO/librechat/branding" "$REPO/librechat/caddy" "$APP/"
 python3 "$REPO/scripts/build-config.py" /opt/pugad/content \
   "$REPO/librechat/librechat.template.yaml" "$APP/librechat.yaml"
 
