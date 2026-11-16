@@ -4,15 +4,6 @@ A reskin of LibreChat for an invented egg supplier, deployed and operated on AWS
 ## Credits
 Based on LibreChat by Danny Avila and contributors — https://github.com/danny-avila/LibreChat — MIT licence.
 
-## Project website
-The report site lives in its own folder, `website/`, and is published to GitHub Pages at
-https://harmanmagar14.github.io/sam10-pugad/ by `.github/workflows/pages.yml` on every push to `main`.
-One-time setup: Settings > Pages > Build and deployment > Source: **GitHub Actions**.
-
-To change it, edit `scripts/build-site.py` and run `python scripts/build-site.py` (it rewrites `website/`).
-Remaining fill-ins (declaration date, video link) are at the top of that file. Screenshots used by the site
-are in `website/evidence/`.
-
 ## Contribution log
 | Date | Who | What | Evidence |
 |---|---|---|---|
