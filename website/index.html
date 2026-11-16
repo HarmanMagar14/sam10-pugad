@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pugad Assist on AWS</title>
+<meta name="description" content="SAM10 final project: Pugad Assist, a shop chatbot deployed and operated on AWS.">
+<link rel="icon" href="assets/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="home">
+<div class="aurora" aria-hidden="true"><span class="blade b1"></span><span class="blade b2"></span><span class="blade b3"></span><span class="blade b4"></span></div>
+<div class="page">
+<header class="pill-nav">
+  <a class="logo" href="index.html"><span class="diamond"></span>Pugad Assist</a>
+  <nav class="nav-links" aria-label="Main"><a href="architecture.html">Report</a><a href="system-card.html">System card</a><a href="results.html">Results</a><a href="evidence.html">Evidence</a><a href="declaration.html">Video</a></nav>
+  <div class="nav-right">
+    <a class="muted-link" href="https://github.com/HarmanMagar14/sam10-pugad">GitHub</a>
+    <a class="pill-cta" href="https://13-239-67-10.sslip.io" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Open app</a>
+  </div>
+</header>
+<main>
+
+<div class="hero-wrap">
+<section class="hero">
+  <span class="eyebrow"><span class="tag">SAM10</span>Live on AWS with alarms, nightly backups &amp; a health check</span>
+  <h1 class="hero-title">A shop chatbot, moved to the cloud<br>and kept <span class="warm">alive</span>.</h1>
+  <p class="hero-sub">Pugad Assist answers customer questions for an invented egg supplier in Pampanga.
+  We put it on Amazon Web Services, then watched it, backed it up, locked it down and proved it recovers when something breaks.</p>
+  <div class="keys">
+    <a class="keycap" href="https://13-239-67-10.sslip.io" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Open Pugad Assist</a>
+    <a class="keycap" href="architecture.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Read the report</a>
+  </div>
+  <p class="mono-cap">13-239-67-10.sslip.io · ap-southeast-2 · gemini-3.5-flash</p>
+
+  <div class="cmd" role="group" aria-label="Jump to a section">
+    <div class="cmd-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="cmd-q">disk full<span class="caret"></span></span><span class="mode">Report</span></div>
+    <ul class="cmd-list">
+      <li><a href="automation.html#incident" class="active"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 14h18M7 17h.01"/></svg></span><span>Automation &amp; incident</span><span class="arg">debug.log 9.0G → fixed in ~2 min</span><span class="kbd">⌘ ↵</span></a></li>
+      <li><a href="operations.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span><span>Monitoring &amp; alarms</span><span class="arg">pugad-disk-filling · 15:54:06 UTC</span><span class="kbd">⌘ M</span></a></li>
+      <li><a href="results.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span>Results: before and after</span><span class="arg">detect ~4 min · fix ~2 min</span><span class="kbd">⌘ R</span></a></li>
+      <li><a href="evidence.html"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg></span><span>Evidence</span><span class="arg">E-12a  E-12b  E-12c</span><span class="kbd">⌘ E</span></a></li>
+    </ul>
+    <div class="cmd-foot"><span>↑↓ navigate · ↵ open · esc dismiss</span><span class="logo"><span class="diamond"></span>Pugad Assist</span></div>
+  </div>
+
+  <a class="ghost" href="#summary">Learn more <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</section>
+<div class="badge"><span class="mark">S10</span><span><small>SAM10 final project</small><b>Built on AWS · Sydney</b></span></div>
+</div>
+
+<div class="content wide" id="summary">
+<p class="kicker">Executive summary</p>
+<h2 style="margin-top:0">In plain English</h2>
+<ul>
+  <li><b>We built the assistant.</b> It answers only from ten shop documents. <a class="ev-tag" href="evidence/E-01-pugad-assist.png" title="Pugad Assist answering a price question with the Pugad branding" target="_blank" rel="noopener">E-01</a></li>
+  <li><b>We rented a computer in the cloud.</b> One server in Sydney runs it, with a padlock (HTTPS).</li>
+  <li><b>We watch it.</b> A dashboard and eight alarms that email us. <a class="ev-tag" href="evidence/E-06-dashboard.jpg" title="CloudWatch dashboard pugad-ops: alarm strip, questions, answer time, failures, CPU, memory, disk" target="_blank" rel="noopener">E-06</a><a class="ev-tag" href="evidence/E-07-alarms.jpg" title="The 8 CloudWatch alarms, all with actions enabled (14 Nov 2026)" target="_blank" rel="noopener">E-07</a></li>
+  <li><b>We copy it every night</b>, and proved a copy really restores: 1 user, 1 chat, 2 messages, matching the live server. <a class="ev-tag" href="evidence/E-11b-live-counts-and-fresh-backup.jpg" title="Live database counts (users 1, convos 1, messages 2) and a fresh backup run" target="_blank" rel="noopener">E-11b</a></li>
+  <li><b>Two chores run by themselves:</b> the nightly backup, and a check of the site every 15 minutes. <a class="ev-tag" href="evidence/E-15a-healthcheck-runs.jpg" title="Logs Insights: health-check runs every 15 min, HealthCheckOK 1, status 200" target="_blank" rel="noopener">E-15a</a><a class="ev-tag" href="evidence/E-15b-backup-runs.jpg" title="Logs Insights: 5 &#x27;backup ok&#x27; runs, 11–14 Nov 2026" target="_blank" rel="noopener">E-15b</a></li>
+  <li><b>We broke it on purpose.</b> We filled the disk, got the alarm, and fixed it in about two minutes. <a class="ev-tag" href="evidence/E-12b-disk-diagnosis.jpg" title="Diagnosis at 15:55:10 UTC: du trail / → /var → /var/log/pugad → debug.log 9.0 G" target="_blank" rel="noopener">E-12b</a></li>
+  <li><b>We kept the bill small</b>, with a USD 25 monthly budget alert. <a class="ev-tag" href="evidence/E-16-budget-before.png" title="Budget pugad-monthly-budget: USD 25, USD 0.00 used (before)" target="_blank" rel="noopener">E-16</a></li>
+</ul>
+<div class="callout bad"><b>The one thing to fix first:</b> everything runs on a single server. If it stops, the site stops until someone rebuilds it by hand.</div>
+
+<h2>The report</h2>
+<ul class="projects">
+  <li><a href="architecture.html"><img src="assets/architecture.svg" alt="" loading="lazy"><h3>AWS infrastructure design</h3><p>One server, with managed AWS services around it for secrets, backups, logs and alarms.</p></a></li>
+  <li><a href="system-card.html"><img src="evidence/E-14-quality-guardrails.jpg" alt="" loading="lazy"><h3>System card</h3><p>What Pugad Assist is, what it knows, its model, its limits, and who should not use it.</p></a></li>
+  <li><a href="baseline.html"><img src="evidence/E-05-original-librechat.webp" alt="" loading="lazy"><h3>Baseline</h3><p>Where we started: stock LibreChat on a laptop and an empty AWS account.</p></a></li>
+  <li><a href="well-architected.html"><img src="evidence/E-12-builder-id-mfa-redacted.png" alt="" loading="lazy"><h3>Well-Architected review</h3><p>Six pillars rated good, adequate or gap, and the one gap to fix first.</p></a></li>
+  <li><a href="operations.html"><img src="evidence/E-06-dashboard.jpg" alt="" loading="lazy"><h3>Monitoring, backup and security</h3><p>The dashboard, eight alarms, a proven restore, and security before and after.</p></a></li>
+  <li><a href="automation.html"><img src="evidence/E-12b-disk-diagnosis.jpg" alt="" loading="lazy"><h3>Automation and the incident</h3><p>Two automations that run on their own, and a disk-full fault fixed in two minutes.</p></a></li>
+  <li><a href="results.html"><img src="evidence/E-11b-live-counts-and-fresh-backup.jpg" alt="" loading="lazy"><h3>Results</h3><p>Before and after, with cost and graphs.</p></a></li>
+  <li><a href="next-steps.html"><img src="evidence/E-13-gemini-429-daily-quota.jpg" alt="" loading="lazy"><h3>Next steps</h3><p>Five improvements, most important first.</p></a></li>
+  <li><a href="evidence.html"><img src="evidence/E-09-lambda-test.jpg" alt="" loading="lazy"><h3>Evidence</h3><p>Every screenshot behind every claim on this site.</p></a></li>
+  <li><a href="declaration.html"><img src="evidence/E-01-pugad-assist.png" alt="" loading="lazy"><h3>Declaration and video</h3><p>Our signed declaration and the project video.</p></a></li>
+</ul>
+
+<p style="margin-top:40px;color:var(--muted);font-size:.88rem">Pugad Fresh Eggs is not a real business; every price, place and contact detail is invented.
+Pugad Assist is based on <a href="https://github.com/danny-avila/LibreChat">LibreChat</a> (MIT licence).</p>
+</div>
+
+</main>
+<footer class="site-foot"><span>Harman Magar and Justine Esguerra</span><span><a href="mailto:esguerra.justinegabriel@student.auf.edu.ph">esguerra.justinegabriel@student.auf.edu.ph</a> · <a href="mailto:magar.harman@student.auf.edu.ph">magar.harman@student.auf.edu.ph</a></span></footer>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

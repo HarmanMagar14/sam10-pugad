@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baseline: before we started · Pugad Assist</title>
+<meta name="description" content="SAM10 final project: Pugad Assist, a shop chatbot deployed and operated on AWS.">
+<link rel="icon" href="assets/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="inner">
+<div class="aurora" aria-hidden="true"><span class="blade b1"></span><span class="blade b2"></span><span class="blade b3"></span><span class="blade b4"></span></div>
+<div class="page">
+<header class="pill-nav">
+  <a class="logo" href="index.html"><span class="diamond"></span>Pugad Assist</a>
+  <nav class="nav-links" aria-label="Main"><a href="architecture.html">Report</a><a href="system-card.html">System card</a><a href="results.html">Results</a><a href="evidence.html">Evidence</a><a href="declaration.html">Video</a></nav>
+  <div class="nav-right">
+    <a class="muted-link" href="https://github.com/HarmanMagar14/sam10-pugad">GitHub</a>
+    <a class="pill-cta" href="https://13-239-67-10.sslip.io" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Open app</a>
+  </div>
+</header>
+<main>
+<div class="content">
+<p class="kicker">Section 4</p>
+<h1>Baseline: the setup before we touched it</h1>
+<p class="lede">On 10 November 2026 we started from a stock copy of LibreChat on a laptop and an empty AWS account.</p>
+
+<figure class="ev" id="E-05"><a class="img" href="evidence/E-05-original-librechat.webp" target="_blank" rel="noopener"><img src="evidence/E-05-original-librechat.webp" alt="The original, un-branded LibreChat running on the laptop (baseline)" loading="lazy"></a><figcaption><b>E-05</b> · The original, un-branded LibreChat running on the laptop (baseline) — stock LibreChat v0.8.9-rc1, run locally by Justine</figcaption></figure>
+
+<div class="table-wrap"><table><thead><tr><th>Area</th><th>Baseline (10 Nov 2026)</th></tr></thead><tbody><tr><td>Application</td><td>Stock LibreChat v0.8.9-rc1, default name and logo, all features on (search, RAG, vector DB) <a class="ev-tag" href="evidence/E-05-original-librechat.webp" title="The original, un-branded LibreChat running on the laptop (baseline)" target="_blank" rel="noopener">E-05</a></td></tr><tr><td>Where it ran</td><td>One laptop (WSL + Docker), <code>http://localhost:3080</code> — nobody else could reach it</td></tr><tr><td>HTTPS</td><td>None</td></tr><tr><td>Secrets</td><td>API key in a <code>.env</code> file on the laptop</td></tr><tr><td>Shop knowledge</td><td>None — a general chatbot that would answer anything</td></tr><tr><td>Monitoring and alarms</td><td>None</td></tr><tr><td>Backups</td><td>None</td></tr><tr><td>Automation</td><td>None — everything started by hand</td></tr><tr><td>AWS account</td><td>New Builder ID with MFA, Sydney region <a class="ev-tag" href="evidence/E-12-builder-id-mfa-redacted.png" title="AWS Builder ID with an MFA (TOTP) device registered (personal details blacked out)" target="_blank" rel="noopener">E-12</a></td></tr><tr><td>Cost</td><td>USD 0.00 used, USD 25 budget just created <a class="ev-tag" href="evidence/E-16-budget-before.png" title="Budget pugad-monthly-budget: USD 25, USD 0.00 used (before)" target="_blank" rel="noopener">E-16</a></td></tr></tbody></table></div>
+
+<div class="grid-2"><figure class="ev" id="E-16"><a class="img" href="evidence/E-16-budget-before.png" target="_blank" rel="noopener"><img src="evidence/E-16-budget-before.png" alt="Budget pugad-monthly-budget: USD 25, USD 0.00 used (before)" loading="lazy"></a><figcaption><b>E-16</b> · Budget pugad-monthly-budget: USD 25, USD 0.00 used (before)</figcaption></figure><figure class="ev" id="E-12"><a class="img" href="evidence/E-12-builder-id-mfa-redacted.png" target="_blank" rel="noopener"><img src="evidence/E-12-builder-id-mfa-redacted.png" alt="AWS Builder ID with an MFA (TOTP) device registered (personal details blacked out)" loading="lazy"></a><figcaption><b>E-12</b> · AWS Builder ID with an MFA (TOTP) device registered (personal details blacked out)</figcaption></figure></div>
+<nav class="pager" aria-label="Page"><a href="system-card.html"><small>Previous</small>System card</a><a href="well-architected.html" style="text-align:right"><small>Next</small>Well-Architected review</a></nav></div>
+</main>
+<footer class="site-foot"><span>Harman Magar and Justine Esguerra</span><span><a href="mailto:esguerra.justinegabriel@student.auf.edu.ph">esguerra.justinegabriel@student.auf.edu.ph</a> · <a href="mailto:magar.harman@student.auf.edu.ph">magar.harman@student.auf.edu.ph</a></span></footer>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

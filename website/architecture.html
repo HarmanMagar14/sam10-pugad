@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWS infrastructure design · Pugad Assist</title>
+<meta name="description" content="SAM10 final project: Pugad Assist, a shop chatbot deployed and operated on AWS.">
+<link rel="icon" href="assets/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="inner">
+<div class="aurora" aria-hidden="true"><span class="blade b1"></span><span class="blade b2"></span><span class="blade b3"></span><span class="blade b4"></span></div>
+<div class="page">
+<header class="pill-nav">
+  <a class="logo" href="index.html"><span class="diamond"></span>Pugad Assist</a>
+  <nav class="nav-links" aria-label="Main"><a href="architecture.html" aria-current=page>Report</a><a href="system-card.html">System card</a><a href="results.html">Results</a><a href="evidence.html">Evidence</a><a href="declaration.html">Video</a></nav>
+  <div class="nav-right">
+    <a class="muted-link" href="https://github.com/HarmanMagar14/sam10-pugad">GitHub</a>
+    <a class="pill-cta" href="https://13-239-67-10.sslip.io" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Open app</a>
+  </div>
+</header>
+<main>
+<div class="content">
+<p class="kicker">Section 2</p>
+<h1>AWS infrastructure design</h1>
+<p class="lede">One server does the work; managed AWS services around it hold the secrets, the backups, the logs and the alarms.</p>
+<div class="card">
+<style>
+.arch .zone{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:6 4}
+.arch .box{fill:var(--surface);stroke:var(--brand);stroke-width:1.5}
+.arch .box.alt{fill:var(--surface-2);stroke:var(--line)}
+.arch .box.ext{fill:var(--surface);stroke:var(--muted);stroke-dasharray:4 3}
+.arch text{fill:var(--ink);font:13px var(--font)}
+.arch .t{font-weight:700}
+.arch .s{fill:var(--muted);font-size:11.5px}
+.arch .z{fill:var(--muted);font-size:12px;font-weight:700;letter-spacing:.05em}
+.arch .ln{stroke:var(--ink-2);stroke-width:1.5;fill:none;marker-end:url(#ah)}
+.arch .ln.d{stroke-dasharray:4 3}
+.arch .lb{fill:var(--brand-ink);font-size:11.5px;font-weight:600}
+</style>
+<svg class="arch" viewBox="0 0 960 640" role="img" aria-label="Pugad Assist architecture on AWS">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" style="color:var(--ink-2)"/></marker></defs>
+
+<!-- outside AWS -->
+<rect class="box ext" x="20" y="40" width="170" height="70" rx="10"/>
+<text class="t" x="105" y="70" text-anchor="middle">Customer</text>
+<text class="s" x="105" y="90" text-anchor="middle">web browser / phone</text>
+
+<rect class="box ext" x="20" y="470" width="170" height="80" rx="10"/>
+<text class="t" x="105" y="500" text-anchor="middle">Google Gemini</text>
+<text class="s" x="105" y="518" text-anchor="middle">gemini-3.5-flash</text>
+<text class="s" x="105" y="534" text-anchor="middle">(outside AWS)</text>
+
+<rect class="box ext" x="20" y="580" width="170" height="44" rx="10"/>
+<text class="t" x="105" y="607" text-anchor="middle">Team email</text>
+
+<!-- AWS region -->
+<rect class="zone" x="220" y="14" width="725" height="616" rx="14"/>
+<text class="z" x="236" y="36">AWS · ap-southeast-2 (Sydney)</text>
+
+<!-- EC2 -->
+<rect class="zone" x="240" y="56" width="330" height="390" rx="12" style="stroke:var(--brand)"/>
+<text class="z" x="256" y="78">EC2 · pugad-server · 20 GB disk</text>
+<rect class="box" x="265" y="92" width="280" height="54" rx="8"/>
+<text class="t" x="280" y="115">Caddy</text><text class="s" x="280" y="133">HTTPS 443 · free Let's Encrypt certificate</text>
+<rect class="box" x="265" y="166" width="280" height="54" rx="8"/>
+<text class="t" x="280" y="189">nginx</text><text class="s" x="280" y="207">writes request log (JSON) to /var/log/pugad</text>
+<rect class="box" x="265" y="240" width="280" height="54" rx="8"/>
+<text class="t" x="280" y="263">LibreChat (Pugad Assist)</text><text class="s" x="280" y="281">reskinned chat app + system prompt</text>
+<rect class="box" x="265" y="314" width="280" height="54" rx="8"/>
+<text class="t" x="280" y="337">MongoDB</text><text class="s" x="280" y="355">users, conversations, messages</text>
+<rect class="box alt" x="265" y="384" width="280" height="46" rx="8"/>
+<text class="s" x="280" y="403">systemd: pugad.service · pugad-backup.timer</text>
+<text class="s" x="280" y="420">CloudWatch agent · logrotate (hourly)</text>
+<path class="ln" d="M405,146 V164"/><path class="ln" d="M405,220 V238"/><path class="ln" d="M405,294 V312"/>
+
+<!-- arrows from outside -->
+<path class="ln" d="M190,75 H230 Q245,75 245,95 V110 H263"/>
+<text class="lb" x="196" y="66">HTTPS</text>
+<path class="ln d" d="M265,267 H215 Q205,267 205,280 V500 H192"/>
+<text class="lb" x="128" y="455">question + documents</text>
+
+<!-- data services -->
+<rect class="box" x="610" y="56" width="315" height="56" rx="8"/>
+<text class="t" x="625" y="79">S3 · pugad-content-hm123</text><text class="s" x="625" y="97">10 shop documents, synced at start-up</text>
+<rect class="box" x="610" y="126" width="315" height="56" rx="8"/>
+<text class="t" x="625" y="149">SSM Parameter Store</text><text class="s" x="625" y="167">5 encrypted secrets (API key, JWT, creds)</text>
+<rect class="box" x="610" y="196" width="315" height="56" rx="8"/>
+<text class="t" x="625" y="219">S3 · pugad-backups-hm123</text><text class="s" x="625" y="237">nightly DB backup · versioned · lifecycle</text>
+<path class="ln" d="M608,84 H572"/><path class="ln" d="M608,154 H572"/><path class="ln" d="M572,224 H608"/>
+<text class="lb" x="576" y="218">02:00</text>
+
+<!-- observability -->
+<rect class="box" x="610" y="286" width="315" height="70" rx="8"/>
+<text class="t" x="625" y="309">CloudWatch</text><text class="s" x="625" y="327">logs (30-day) · metrics · dashboard pugad-ops</text><text class="s" x="625" y="343">8 alarms</text>
+<rect class="box" x="610" y="376" width="150" height="56" rx="8"/>
+<text class="t" x="625" y="399">SNS</text><text class="s" x="625" y="417">pugad-alerts</text>
+<rect class="box" x="775" y="376" width="150" height="56" rx="8"/>
+<text class="t" x="790" y="399">CloudTrail</text><text class="s" x="790" y="417">pugad-trail</text>
+<path class="ln" d="M572,330 H608"/><text class="lb" x="576" y="322">logs</text>
+<path class="ln" d="M660,356 V374"/>
+<path class="ln" d="M640,432 V600 H192"/><text class="lb" x="420" y="594">alarm email</text>
+
+<!-- automation -->
+<rect class="box" x="610" y="470" width="315" height="70" rx="8"/>
+<text class="t" x="625" y="493">Lambda · pugad-health-check</text><text class="s" x="625" y="511">EventBridge Scheduler, every 15 min</text><text class="s" x="625" y="527">calls the site, writes HealthCheckOK</text>
+<path class="ln d" d="M610,500 H590 V120 H547"/>
+<path class="ln" d="M880,470 V358"/>
+
+<rect class="box alt" x="250" y="470" width="320" height="56" rx="8"/>
+<text class="t" x="265" y="493">IAM role pugad-ec2-role</text><text class="s" x="265" y="511">least privilege · Session Manager (no SSH)</text>
+<rect class="box alt" x="250" y="540" width="320" height="44" rx="8"/>
+<text class="t" x="265" y="567">AWS Budgets · USD 25 / month alert</text>
+</svg>
+</div>
+<p style="color:var(--muted);font-size:.85rem">Solid arrows: data flows on every request or on a schedule. Dashed arrows: calls out of AWS or checks from outside the server.</p>
+
+<h2>How a question travels</h2>
+<ol>
+  <li>The customer opens <code>https://13-239-67-10.sslip.io</code>. <b>Caddy</b> answers on HTTPS with a free Let's Encrypt certificate.</li>
+  <li><b>nginx</b> logs the request (time, status, duration, app version) to <code>/var/log/pugad/access.log</code>, which the CloudWatch agent ships to <code>/sam10/pugad/requests</code>. <a class="ev-tag" href="evidence/log-groups.png" title="CloudWatch log groups /sam10/pugad/requests, /app and /mongodb" target="_blank" rel="noopener">LOGS</a></li>
+  <li><b>LibreChat</b> adds the Pugad system prompt and the 10 shop documents and sends it all to <b>Google Gemini 3.5 Flash</b>.</li>
+  <li>The answer streams back; the conversation is saved in <b>MongoDB</b> on the same server.</li>
+</ol>
+
+<h2>Each piece and why it is there</h2>
+<div class="table-wrap"><table><thead><tr><th>Component</th><th>Job</th><th>Why this choice</th></tr></thead><tbody><tr><td>EC2 <code>pugad-server</code> (Docker Compose)</td><td>Runs Caddy, nginx, LibreChat, MongoDB</td><td>Simplest way to run an existing Docker app; slimmed to ~785 MiB by turning off search, RAG and the vector DB</td></tr><tr><td>S3 <code>pugad-content-hm123</code></td><td>The 10 shop documents</td><td>Staff can change prices without touching the server; synced at every start</td></tr><tr><td>SSM Parameter Store</td><td>5 secrets (Gemini key, JWT, creds)</td><td>Secrets never sit in Git or on disk; read into memory at start-up</td></tr><tr><td>S3 <code>pugad-backups-hm123</code></td><td>Nightly database + config backups</td><td>Private, versioned, old copies expire automatically <a class="ev-tag" href="evidence/E-10-backup-lifecycle.png" title="S3 lifecycle rule expire-old-backups on the backup bucket" target="_blank" rel="noopener">E-10</a></td></tr><tr><td>CloudWatch</td><td>Logs (30-day), metrics, dashboard, 8 alarms</td><td>One place to see health <a class="ev-tag" href="evidence/E-06-dashboard.jpg" title="CloudWatch dashboard pugad-ops: alarm strip, questions, answer time, failures, CPU, memory, disk" target="_blank" rel="noopener">E-06</a><a class="ev-tag" href="evidence/E-07-alarms.jpg" title="The 8 CloudWatch alarms, all with actions enabled (14 Nov 2026)" target="_blank" rel="noopener">E-07</a></td></tr><tr><td>SNS <code>pugad-alerts</code></td><td>Sends alarm emails</td><td>Email confirmed by the team</td></tr><tr><td>Lambda <code>pugad-health-check</code></td><td>Visits the site every 15 min</td><td>Catches 'site down' even if the server cannot report it <a class="ev-tag" href="evidence/E-09b-lambda-schedule.jpg" title="Health-check Lambda triggered by Scheduler every 15 minutes (rate(15 minutes), ENABLED)" target="_blank" rel="noopener">E-09b</a></td></tr><tr><td>CloudTrail <code>pugad-trail</code></td><td>Records every AWS console/API action</td><td>Audit trail for security</td></tr><tr><td>IAM role <code>pugad-ec2-role</code></td><td>Gives the server only the permissions it needs</td><td>Least privilege: it can upload backups but not read or delete them</td></tr><tr><td>AWS Budgets</td><td>Email if spend passes USD 25 / month</td><td>No bill shock <a class="ev-tag" href="evidence/E-16-budget-before.png" title="Budget pugad-monthly-budget: USD 25, USD 0.00 used (before)" target="_blank" rel="noopener">E-16</a></td></tr></tbody></table></div>
+
+<div class="callout"><b>Plan B on HTTPS.</b> The design used <b>CloudFront</b> in front of the server. AWS held the account in
+verification for 4+ days, so CloudFront could not be created. We switched to Caddy with an automatic certificate on an
+<code>sslip.io</code> address so the site still had HTTPS. The cost of this: ports 80 and 443 are open to the whole internet
+instead of only to CloudFront (see <a href="operations.html#security">security</a>).</div>
+<nav class="pager" aria-label="Page"><a href="index.html"><small>Previous</small>Executive summary</a><a href="system-card.html" style="text-align:right"><small>Next</small>System card</a></nav></div>
+</main>
+<footer class="site-foot"><span>Harman Magar and Justine Esguerra</span><span><a href="mailto:esguerra.justinegabriel@student.auf.edu.ph">esguerra.justinegabriel@student.auf.edu.ph</a> · <a href="mailto:magar.harman@student.auf.edu.ph">magar.harman@student.auf.edu.ph</a></span></footer>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

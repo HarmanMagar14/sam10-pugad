@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>System card · Pugad Assist</title>
+<meta name="description" content="SAM10 final project: Pugad Assist, a shop chatbot deployed and operated on AWS.">
+<link rel="icon" href="assets/favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="inner">
+<div class="aurora" aria-hidden="true"><span class="blade b1"></span><span class="blade b2"></span><span class="blade b3"></span><span class="blade b4"></span></div>
+<div class="page">
+<header class="pill-nav">
+  <a class="logo" href="index.html"><span class="diamond"></span>Pugad Assist</a>
+  <nav class="nav-links" aria-label="Main"><a href="architecture.html">Report</a><a href="system-card.html" aria-current=page>System card</a><a href="results.html">Results</a><a href="evidence.html">Evidence</a><a href="declaration.html">Video</a></nav>
+  <div class="nav-right">
+    <a class="muted-link" href="https://github.com/HarmanMagar14/sam10-pugad">GitHub</a>
+    <a class="pill-cta" href="https://13-239-67-10.sslip.io" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Open app</a>
+  </div>
+</header>
+<main>
+<div class="content">
+<p class="kicker">Section 3</p>
+<h1>System card: Pugad Assist</h1>
+<p class="lede">What it is, what it knows, what it runs on, where it fails, and who should not rely on it.</p>
+
+<div class="grid-2">
+<div class="card"><h3 style="margin-top:0">What it is</h3>
+<p>A customer-service chat assistant for an invented egg supplier in Angeles City and Mabalacat City, Pampanga. It answers
+questions about egg sizes, prices, ordering, bulk orders, delivery, payment, opening hours, cracked eggs and storage. <a class="ev-tag" href="evidence/E-01-pugad-assist.png" title="Pugad Assist answering a price question with the Pugad branding" target="_blank" rel="noopener">E-01</a></p>
+<p><b>It cannot</b> place, change or cancel orders, take payments, or give discounts. Staff do that.</p></div>
+<div class="card"><h3 style="margin-top:0">The model</h3>
+<ul style="padding-left:18px;margin:0">
+<li>Google <b>gemini-3.5-flash</b> through Google AI Studio (free tier)</li>
+<li>Temperature 0.2 (steady, not creative)</li>
+<li>Chosen after testing: 2.5-flash was retired, 3.8-flash timed out; 3.5-flash got 5/5 test questions right</li>
+<li>No fine-tuning: all shop knowledge is in the system prompt</li></ul></div>
+</div>
+
+<h2>Its data</h2>
+<div class="table-wrap"><table><thead><tr><th>Data</th><th>Where it lives</th><th>Notes</th></tr></thead><tbody><tr><td>10 shop documents (about, prices, ordering, bulk, delivery, payment, hours, cracked eggs, storage, FAQ)</td><td>Git repo + S3 content bucket</td><td>All invented. Pasted into the system prompt on start-up</td></tr><tr><td>Customer accounts, conversations, messages</td><td>MongoDB on the server; nightly copy in S3</td><td>Registration closed after the team signed up</td></tr><tr><td>Request log (time, path, status, duration, version, request body)</td><td>CloudWatch <code>/sam10/pugad/requests</code>, 30 days</td><td>The request body can contain the customer's question text</td></tr><tr><td>Questions sent to Gemini</td><td>Google</td><td>Leaves AWS. Google's free-tier terms apply</td></tr></tbody></table></div>
+
+<h2>The rules it follows</h2>
+<p>From the system prompt: answer <b>only</b> from the documents; say "Sorry, I don't have that information" and give the order line otherwise;
+never promise discounts, refunds or replacements; no medical or nutrition advice; never ask for card numbers, passwords or PINs;
+reply in English, Tagalog or Taglish; keep answers to 1–4 sentences with prices in PHP.</p>
+<p>Tested with 12 questions (prices, delivery areas, minimum order, GCash, cracked eggs, Tagalog, a discount request, health advice).
+It also refused to reveal its system prompt and refused an unknown fact. <a class="ev-tag" href="evidence/E-14-quality-guardrails.jpg" title="Guardrails: refuses an unknown fact and a prompt-injection attempt" target="_blank" rel="noopener">E-14</a></p>
+<figure class="ev" id="E-14"><a class="img" href="evidence/E-14-quality-guardrails.jpg" target="_blank" rel="noopener"><img src="evidence/E-14-quality-guardrails.jpg" alt="Guardrails: refuses an unknown fact and a prompt-injection attempt" loading="lazy"></a><figcaption><b>E-14</b> · Guardrails: refuses an unknown fact and a prompt-injection attempt</figcaption></figure>
+
+<h2>Known limits</h2>
+<ul>
+<li><b>Free-tier quota.</b> When Google's daily quota runs out, the assistant shows "status 429" instead of an answer. <a class="ev-tag" href="evidence/E-13-gemini-429-daily-quota.jpg" title="Known limit: Gemini free-tier daily quota reached (status 429)" target="_blank" rel="noopener">E-13</a></li>
+<li><b>Slow answers.</b> One answer on the dashboard took about 27 seconds. <a class="ev-tag" href="evidence/E-06-dashboard.jpg" title="CloudWatch dashboard pugad-ops: alarm strip, questions, answer time, failures, CPU, memory, disk" target="_blank" rel="noopener">E-06</a></li>
+<li><b>One server.</b> No automatic failover; if the server stops, the site stops.</li>
+<li><b>Knowledge is frozen</b> until someone updates the documents and restarts the app. It does not know today's stock or delivery slots.</li>
+<li><b>Language models can still be wrong.</b> Low temperature and strict rules reduce this; they do not remove it.</li>
+</ul>
+<figure class="ev" id="E-13"><a class="img" href="evidence/E-13-gemini-429-daily-quota.jpg" target="_blank" rel="noopener"><img src="evidence/E-13-gemini-429-daily-quota.jpg" alt="Known limit: Gemini free-tier daily quota reached (status 429)" loading="lazy"></a><figcaption><b>E-13</b> · Known limit: Gemini free-tier daily quota reached (status 429)</figcaption></figure>
+
+<h2>Who should not use it</h2>
+<ul>
+<li>Anyone wanting <b>health, allergy or food-safety advice</b> — ask a doctor or the label.</li>
+<li>Anyone needing a <b>confirmed order, price, refund or delivery time</b> — only staff can confirm.</li>
+<li>Anyone who would type <b>card numbers, passwords, one-time PINs</b> or other private details — never share these in the chat.</li>
+<li><b>Real customers of any real egg business</b> — Pugad Fresh Eggs does not exist; every detail is made up.</li>
+<li>Anyone using it for something that matters when it is down — there is no uptime guarantee.</li>
+</ul>
+<nav class="pager" aria-label="Page"><a href="architecture.html"><small>Previous</small>AWS infrastructure design</a><a href="baseline.html" style="text-align:right"><small>Next</small>Baseline: before we started</a></nav></div>
+</main>
+<footer class="site-foot"><span>Harman Magar and Justine Esguerra</span><span><a href="mailto:esguerra.justinegabriel@student.auf.edu.ph">esguerra.justinegabriel@student.auf.edu.ph</a> · <a href="mailto:magar.harman@student.auf.edu.ph">magar.harman@student.auf.edu.ph</a></span></footer>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
